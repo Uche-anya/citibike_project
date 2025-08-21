@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="citibike_project",
-    version="0.1.0",
+    version="0.0.2",
     description= "This contains the code in the ./src directory for the Citibike ETL project.",
     author="Uchechukwu Anya",
     packages=find_packages(where="./src"),
