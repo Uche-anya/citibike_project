@@ -1,0 +1,8 @@
+[run]
+omit =
+    # any files or globs you want to exclude
+    src/citibike_project/*.py
+    src/__init__.py
+    src/*/__init__.py
+
+

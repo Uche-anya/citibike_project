@@ -1,0 +1,43 @@
+bundle:
+  name: citibike_project
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    default: "citibike_development"
+  dev_flag:
+    default: true
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://4167641801764594.4.gcp.databricks.com
+
+  test:
+    mode: production
+    variables:
+      catalog:
+        default: "citibike_test"
+      dev_flag:
+        default: false
+    presets:
+      name_prefix: '[testing] '
+    workspace:
+      host: https://3529659471634240.0.gcp.databricks.com
+      root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}
+
+  prod:
+    mode: production
+    variables:
+      catalog:
+        default: "citibike_production"
+      dev_flag:
+        default: false
+    workspace:
+      host: https://2815004578763257.7.gcp.databricks.com
+      root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}
+   
