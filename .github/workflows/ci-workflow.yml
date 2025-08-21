@@ -41,7 +41,4 @@ jobs:
           path: htmlcov
           
 
-
         
-          name: coverage-html
-          path: htmlcov
