@@ -26,11 +26,9 @@ jobs:
 
       - name: Configure Databricks (TEST)
         run: |
-          cat <<EOF > ~/.databrickscfg
-[TEST]
-host = https://3529659471634240.0.gcp.databricks.com
-token = ${{ secrets.DATABRICKS_TEST_TOKEN }}
-EOF
+          echo "[TEST]" > ~/.databrickscfg
+          echo "host = https://3529659471634240.0.gcp.databricks.com" >> ~/.databrickscfg
+          echo "token = ${{ secrets.DATABRICKS_TEST_TOKEN }}" >> ~/.databrickscfg
 
       - name: Deploy to TEST
         run: |
@@ -59,11 +57,9 @@ EOF
 
       - name: Configure Databricks (PROD)
         run: |
-          cat <<EOF > ~/.databrickscfg
-[PROD]
-host = https://2815004578763257.7.gcp.databricks.com
-token = ${{ secrets.DATABRICKS_PROD_TOKEN }}
-EOF
+          echo "[PROD]" > ~/.databrickscfg
+          echo "host = https://2815004578763257.7.gcp.databricks.com" >> ~/.databrickscfg
+          echo "token = ${{ secrets.DATABRICKS_PROD_TOKEN }}" >> ~/.databrickscfg
 
       - name: Deploy to PROD
         run: |
