@@ -24,10 +24,11 @@ jobs:
 
       - name: Configure Databricks (TEST)
         run: |
+          mkdir -p ~/.databrickscfg
           cat <<EOF > ~/.databrickscfg
           [TEST]
           host  = https://3529659471634240.0.gcp.databricks.com
-          token = ${{ secrets.TOKEN }}
+          token = ${{ secrets.DATABRICKS_TEST_TOKEN }}
           EOF
 
       - name: Deploy to TEST
@@ -55,10 +56,11 @@ jobs:
 
       - name: Configure Databricks (PROD)
         run: |
+          mkdir -p ~/.databrickscfg
           cat <<EOF > ~/.databrickscfg
           [PROD]
           host  = https://2815004578763257.7.gcp.databricks.com
-          token = ${{ secrets.TOKEN }}
+          token = ${{ secrets.DATABRICKS_PROD_TOKEN }}
           EOF
 
       - name: Deploy to PROD
