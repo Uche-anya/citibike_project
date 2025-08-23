@@ -26,8 +26,8 @@ jobs:
         run: |
           cat <<EOF > ~/.databrickscfg
           [TEST]
-          host  = ${{ secrets.DATABRICKS_HOST }}
-          token = ${{ secrets.DATABRICKS_TOKEN }}
+          host  = https://3529659471634240.0.gcp.databricks.com
+          token = ${{ secrets.TOKEN }}
           EOF
 
       - name: Deploy to TEST
@@ -57,8 +57,8 @@ jobs:
         run: |
           cat <<EOF > ~/.databrickscfg
           [PROD]
-          host  = ${{ secrets.DATABRICKS_HOST }}
-          token = ${{ secrets.DATABRICKS_TOKEN }}
+          host  = https://2815004578763257.7.gcp.databricks.com
+          token = ${{ secrets.TOKEN }}
           EOF
 
       - name: Deploy to PROD
