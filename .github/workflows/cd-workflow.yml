@@ -19,15 +19,17 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Databricks CLI
-        run: curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+      - name: Install Databricks CLI + Dependencies
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+          pip install --upgrade pip setuptools wheel
 
       - name: Configure Databricks (TEST)
         run: |
           mkdir -p ~/.databrickscfg
           cat <<EOF > ~/.databrickscfg
           [TEST]
-          host  = https://3529659471634240.0.gcp.databricks.com
+          host = https://3529659471634240.0.gcp.databricks.com
           token = ${{ secrets.DATABRICKS_TEST_TOKEN }}
           EOF
 
@@ -51,15 +53,17 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Databricks CLI
-        run: curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+      - name: Install Databricks CLI + Dependencies
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+          pip install --upgrade pip setuptools wheel
 
       - name: Configure Databricks (PROD)
         run: |
           mkdir -p ~/.databrickscfg
           cat <<EOF > ~/.databrickscfg
           [PROD]
-          host  = https://2815004578763257.7.gcp.databricks.com
+          host = https://2815004578763257.7.gcp.databricks.com
           token = ${{ secrets.DATABRICKS_PROD_TOKEN }}
           EOF
 
