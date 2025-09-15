@@ -47,11 +47,16 @@ To make the Citibike data actionable, the project includes two **Power BI dashbo
 1. **Daily Summary Dashboard**  
    - Provides a high-level overview of Citibike operations each day  
    - Key metrics: total trips, average trip duration, and active stations  
-   - Trend charts for usage over time  
+   - Trend charts for usage over time
+     ## 🔹 Visualization / Dashboards
+
+![Daily Summary Dashboard](https://github.com/Uche-anya/citibike_project/blob/main/dashboards/daily%20ride%20summary.png?raw=true)
 
 2. **Daily Station Performance Dashboard**  
    - Analyzes performance per station  
-   - Top stations by total trips or average duration   
+   - Top stations by total trips or average duration
+   - 
+  ![Daily Station Performance Dashboard](https://github.com/Uche-anya/citibike_project/blob/main/dashboards/daily%20station%20performance.png?raw=true)
 
 💡 **Integration**:  
 - Both dashboards use **Power BI DirectQuery or imported Gold layer tables** from Databricks    
@@ -81,4 +86,3 @@ To make the Citibike data actionable, the project includes two **Power BI dashbo
 
 ---
 
-👉 This README tells the story of your **Citibike pipeline**, emphasizes the **Medallion architecture**, incorporates **CI/CD + governance**, and highlights **dashboards for visualization**.
