@@ -1,4 +1,4 @@
-#  Citibike ETL Pipeline – CI/CD on Databricks (GCP)
+# Citibike ETL Pipeline – CI/CD on Databricks (GCP)
 
 This project implements a **production-ready ETL pipeline** for the **Citibike dataset** on **Databricks (GCP)**, showcasing:
 
@@ -6,10 +6,11 @@ This project implements a **production-ready ETL pipeline** for the **Citibike d
 - **Environment separation** (Dev, Test, Prod) with Unity Catalog governance  
 - **CI/CD automation** to deploy transformations across environments  
 - **Local development & testing** with PySpark + Pytest  
+- **Power BI dashboards** for actionable insights  
 
 ---
 
-##  Key Features
+## Key Features
 
 ### 🔹 Multi-Environment Setup
 - Separate **Databricks Workspaces** for Dev, Test, and Prod  
@@ -37,8 +38,27 @@ This project implements a **production-ready ETL pipeline** for the **Citibike d
 - **Current authentication**: Personal Access Tokens (PATs) for Test/Prod  
 - **Future plan**: Service Account JSON auth (more secure & GCP-native)  
 
+---
 
-##  Authentication
+## 🔹 Visualization / Dashboards
+
+To make the Citibike data actionable, the project includes two **Power BI dashboards** built on the curated Gold layer:
+
+1. **Daily Summary Dashboard**  
+   - Provides a high-level overview of Citibike operations each day  
+   - Key metrics: total trips, average trip duration, and active stations  
+   - Trend charts for usage over time  
+
+2. **Daily Station Performance Dashboard**  
+   - Analyzes performance per station  
+   - Top stations by total trips or average duration   
+
+💡 **Integration**:  
+- Both dashboards use **Power BI DirectQuery or imported Gold layer tables** from Databricks    
+
+---
+
+## Authentication
 
 ### Current (Short-Term)
 - **Personal Access Tokens (PATs)** for Test & Prod deployments  
@@ -56,10 +76,9 @@ This project implements a **production-ready ETL pipeline** for the **Citibike d
 - Governed **multi-environment setup** with Unity Catalog  
 - **Reproducible deployments** using GitHub Actions + Wheels  
 - Confidence in changes with **local PySpark + pytest** workflow  
+- Actionable insights via **Power BI dashboards**  
 - Future-proofed security by migrating to **service account–based auth**  
 
 ---
 
-👉 This README tells the story of your **Citibike pipeline**, emphasizes the **Medallion architecture**, and ties in **CI/CD + governance**.
-
-
+👉 This README tells the story of your **Citibike pipeline**, emphasizes the **Medallion architecture**, incorporates **CI/CD + governance**, and highlights **dashboards for visualization**.
