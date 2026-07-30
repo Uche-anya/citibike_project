@@ -68,7 +68,8 @@ A production-grade, end-to-end ETL pipeline for **Citibike trip data** built on 
 | Governance | Unity Catalog |
 | Cloud Storage | Google Cloud Storage (GCS) |
 | CI/CD | GitHub Actions |
-| Local Dev | Databricks Connect / PySpark local |
+| Compute | Classic cluster (DBR 15.4, `n2-highmem-4`) for jobs; serverless for DLT only |
+| Local Dev | Databricks Connect (attached cluster) / PySpark local |
 | Testing | pytest 8.3.5 + pytest-cov |
 | Visualization | Power BI |
 
@@ -214,9 +215,9 @@ The project implements the same medallion pipeline two ways — demonstrating bo
 | **Delta Live Tables** | `citibike_etl_pipeline.dlt.yml` | Managed pipelines, built-in retry/restart, auto-scaling |
 | **Databricks Job** | `citibike_etl_pipeline_job.yml` | Fine-grained task control, custom cluster configs, mixed task types |
 
-**DLT Pipeline** — serverless + Photon enabled, 4 notebook libraries chained in order.
+**DLT Pipeline** — 4 notebook libraries chained in order. This is the only part of the project on serverless compute (with Photon enabled).
 
-**Traditional Job** — 5 tasks with explicit dependencies:
+**Traditional Job** — 5 tasks with explicit dependencies, all running on the classic `n2-highmem-4` cluster (DBR `15.4.x-scala2.12`) defined in `clusters.yml`:
 
 ```
 00_whl_upload
@@ -282,7 +283,7 @@ pip install -r requirements-dbc.txt
 databricks auth login
 ```
 
-Connects your local IDE directly to a Databricks cluster via `databricks-connect`.
+Connects your local IDE directly to a Databricks cluster via `databricks-connect`. This is the primary development path for this project — all pipeline code, including the DLT notebooks, was built against an attached DBR 15.4 cluster, since Databricks Connect needs a cluster to run against. The DLT pipeline only becomes serverless once deployed.
 
 ### Running Tests
 
