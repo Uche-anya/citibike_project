@@ -423,14 +423,6 @@ For enterprise-grade security:
 - Fully supported by Databricks CLI via `google-credentials` auth type
 - Eliminates token rotation overhead
 
----
 
-##KeyDesign Decisions
-
-**Dual pipeline implementations** (DLT + traditional job) — demonstrates flexibility and lets teams choose the orchestration model that fits their use case without rewriting transformation logic.
-
-**Python wheel packaging** — ETL utilities are packaged as `.whl` files and installed on the cluster, ensuring the same tested code runs locally and in all environments.
-
-**Unity Catalog-first** — All tables use three-part naming (`catalog.schema.table`), making environment promotion
 
 
