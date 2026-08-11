@@ -425,37 +425,12 @@ For enterprise-grade security:
 
 ---
 
-## Key Design Decisions
+##KeyDesign Decisions
 
 **Dual pipeline implementations** (DLT + traditional job) — demonstrates flexibility and lets teams choose the orchestration model that fits their use case without rewriting transformation logic.
 
 **Python wheel packaging** — ETL utilities are packaged as `.whl` files and installed on the cluster, ensuring the same tested code runs locally and in all environments.
 
-**Unity Catalog-first** — All tables use three-part naming (`catalog.schema.table`), making environment promotion a config change rather than a code change.
+**Unity Catalog-first** — All tables use three-part naming (`catalog.schema.table`), making environment promotion
 
----
-
-## Planned Improvements
-
-This section tracks active and upcoming enhancements to the pipeline. Items are ordered by priority.
-
-### In Progress
-
-| # | Area | Improvement | Why |
-| --- | --- | --- | --- |
-| 1 | Ingestion | Switch Bronze to **Auto Loader** (`cloudFiles`) | Enables incremental, exactly-once file processing — no full re-reads on every run |
-| 2 | Data Quality | Add **DLT Expectations** to Bronze and Silver layers | Catch nulls, negative durations, and schema violations at source before they reach Gold |
-| 3 | CI/CD | Add **pipeline smoke test** in TEST before promoting to PROD | "Deploy succeeded" ≠ "pipeline ran correctly" — this closes that gap |
-
-### Upcoming
-
-| # | Area | Improvement | Why |
-| --- | --- | --- | --- |
-| 4 | Data Integrity | Add **deduplication** on `ride_id` in Silver | Prevents duplicate trips from inflating Gold aggregates on re-runs |
-| 5 | Testing | Add **transformation-level tests** for Bronze → Silver → Gold logic | Current tests only cover utility functions, not the actual pipeline transformations |
-| 6 | CI | Add `databricks bundle validate` step to CI workflow | Catches broken YAML configs before they reach the CD deploy step |
-| 7 | Security | Migrate PAT auth to **GCP Service Account JSON** | More secure, native to GCP IAM, eliminates token rotation overhead |
-| 8 | Observability | Add **job failure alerts** (email/webhook) to job YAML | Currently silent on failure — no notification reaches the team |
-| 9 | Observability | Propagate `pipeline_id` and `processed_date` through to Gold | Makes tracing bad data in dashboards back to its pipeline run possible |
-| 10 | Infrastructure | Add `autotermination_minutes` to cluster config | Prevents idle clusters from running indefinitely and burning cost |
 
